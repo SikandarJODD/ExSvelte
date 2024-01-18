@@ -1,6 +1,7 @@
 <!-- Simple Dark -->
 <script>
 	import { page } from '$app/stores';
+	import ToggleTheme from '$lib/features/darkMode/ToggleTheme.svelte';
 	import { slide } from 'svelte/transition';
 	let nav = {
 		title: 'Svelte Tailwinds',
@@ -15,10 +16,6 @@
 				link: '/interview'
 			},
 			{
-				name: 'Examples',
-				link: '/examples'
-			},
-			{
 				name: 'Animations',
 				link: '/animations'
 			},
@@ -29,27 +26,13 @@
 		]
 	};
 
-	let profileNavs = [
-		{
-			name: 'Your Profile',
-			link: '/'
-		},
-		{
-			name: 'Settings',
-			link: '/'
-		},
-		{
-			name: 'Sign out',
-			link: '/'
-		}
-	];
 	$: isActive = $page.route.id;
 
 	let isProfileMenu = false;
 	let isMobileMenu = false;
 </script>
 
-<nav class="sticky z-40 bg-gray-800 md:top-4 md:bg-transparent">
+<nav class="sticky z-40 bg-gray-900 md:top-4 md:bg-transparent">
 	<div
 		class="mx-auto w-full border-gray-800 {isMobileMenu
 			? 'border-b border-slate-300'
@@ -57,19 +40,22 @@
 	>
 		<div class="flex h-14 items-center justify-between sm:justify-center">
 			<div class="">
-				<a href="/" class="flex-shrink-0 text-xl font-bold text-white sm:hidden">Trinity</a>
+				<a href="/" class="flex-shrink-0 text-xl font-semibold text-primary sm:hidden"
+					>Svelte Learnings</a
+				>
 				<!-- Change Justify-center to end, start -->
 				<div class="hidden w-full justify-center sm:flex">
-					<div class="flex space-x-4">
+					<div class="flex items-center space-x-3">
 						{#each nav.listnavs as item}
 							<a
 								href={item.link}
 								class="{isActive === item.link
 									? 'bg-gray-800 text-slate-50 '
-									: 'text-gray-700  transition-all duration-150 hover:bg-sky-100  hover:text-primary'}   rounded-full px-4 py-2 text-sm font-medium transition-all duration-150 md:px-5 md:py-2.5"
+									: 'border  border-transparent text-gray-700 transition-all duration-150 hover:border hover:border-primary hover:text-primary  dark:text-primary'}   rounded-full px-4 py-2 text-sm font-medium transition-all duration-150 md:px-5 md:py-2.5"
 								>{item.name}</a
 							>
 						{/each}
+						<ToggleTheme />
 					</div>
 				</div>
 			</div>
@@ -104,11 +90,7 @@
 							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
 						/>
 					</svg>
-					<!--
-                Icon when menu is open.
-    
-                Menu open: "block", Menu closed: "hidden"
-              -->
+
 					<svg
 						class="{isMobileMenu ? 'block' : 'hidden'}  h-6 w-6"
 						fill="none"
@@ -144,6 +126,10 @@
 						>{item.name}</a
 					>
 				{/each}
+				<div>
+					<!-- Dark Mode / Light Mode -->
+					<ToggleTheme />
+				</div>
 			</div>
 		</div>
 	{/key}

@@ -6,7 +6,7 @@
 <div class=" -mt-12 flex h-screen flex-col items-center justify-center px-3">
 	<div class=" text-center">
 		<h1 class="my-5 text-5xl font-bold">SvelteKit Learnings</h1>
-		<p class="max-w-4xl text-xl">
+		<p class="max-w-4xl text-xl dark:text-slate-400">
 			Learn svelte tricks, animations, effects,and many more inspired from Joy of Code & Whole
 			Svelte Community
 		</p>

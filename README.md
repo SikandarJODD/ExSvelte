@@ -25,3 +25,7 @@
 #### Interview Questions
 
 ![Interview_Questions](image.png)
+
+#### Desgin Layout
+
+![Design /Interview](Design.svg)
